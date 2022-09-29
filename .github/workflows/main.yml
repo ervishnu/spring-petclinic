@@ -16,7 +16,6 @@ jobs:
         uses: github/codeql-action/upload-sarif@v2
         with:
           sarif_file: snyk.sarif
-
   SonarQube:
     name: SonarQube Scanning
     runs-on: ubuntu-latest
