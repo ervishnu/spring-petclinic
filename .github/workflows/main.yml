@@ -49,8 +49,8 @@ jobs:
   build-and-scan:
     name: Build and scan image
     runs-on: ubuntu-latest
-env:
-  IMAGE_NAME: ${{ github.repository }}:${{ github.sha }}
+    env:
+      IMAGE_NAME: ${{ github.repository }}:${{ github.sha }}
 
 
     steps:
