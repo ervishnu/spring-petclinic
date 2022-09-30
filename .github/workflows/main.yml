@@ -16,15 +16,10 @@ jobs:
         uses: github/codeql-action/upload-sarif@v2
         with:
           sarif_file: snyk.sarif
-
-  jobs:
-  build:
-    name: Build
-    branches:
-      - master
-    pull_request:
-      types: [opened, synchronize, reopened]
-
+  
+  
+  SonarQube:
+    name: SonarQube Scanner
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -50,14 +45,15 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=ervishnu  build-and-scan:
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=ervishnu
+        
 
-
-name: Build and scan image
+  build-and-scan:
+    name: Build and scan image
     runs-on: ubuntu-latest
+
     env:
       IMAGE_NAME: ${{ github.repository }}:${{ github.sha }}
-
 
     steps:
       - name: Check out the repository
