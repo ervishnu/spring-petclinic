@@ -17,16 +17,14 @@ jobs:
         with:
           sarif_file: snyk.sarifname:
 
-Build
-on:
-  push:
-    branches:
-      - master
-  pull_request:
-    types: [opened, synchronize, reopened]
 jobs:
   build:
     name: Build
+    branches:
+      - master
+    pull_request:
+      types: [opened, synchronize, reopened]
+
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
