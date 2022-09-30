@@ -1,4 +1,4 @@
-name: Snyk Scanning
+name: Example workflow for Maven using Snyk
 on: push
 jobs:
   security:
@@ -15,9 +15,9 @@ jobs:
       - name: Upload result to GitHub Code Scanning
         uses: github/codeql-action/upload-sarif@v2
         with:
-          sarif_file: snyk.sarifname:
+          sarif_file: snyk.sarif
 
-jobs:
+  jobs:
   build:
     name: Build
     branches:
